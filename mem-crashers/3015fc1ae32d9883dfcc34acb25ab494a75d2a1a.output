@@ -1,0 +1,44 @@
+ALLOC 4211672817
+ALLOC 42116728178345
+ALLOC 4
+ALLOC 421167281783
+ALLOC 421167281783
+runtime: out of memory: cannot allocate 421167300608-byte block (425380085760 in use)
+fatal error: out of memory
+
+runtime stack:
+runtime.throw(0x1a75b0, 0xd)
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build558465220/src/runtime/panic.go:527 +0x90
+runtime.largeAlloc(0x620f86b677, 0x1, 0xe)
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build558465220/src/runtime/malloc.go:771 +0xdd
+runtime.mallocgc.func3()
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build558465220/src/runtime/malloc.go:658 +0x33
+runtime.systemstack(0x269400)
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build558465220/src/runtime/asm_amd64.s:262 +0x79
+runtime.mstart()
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build558465220/src/runtime/proc.go:992
+
+goroutine 1 [running]:
+runtime.systemstack_switch()
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build558465220/src/runtime/asm_amd64.s:216 fp=0xc82003b938 sp=0xc82003b930
+runtime.mallocgc(0x620f86b677, 0x14f2c0, 0x1, 0x0)
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build558465220/src/runtime/malloc.go:659 +0xa4c fp=0xc82003ba10 sp=0xc82003b938
+runtime.newarray(0x14f2c0, 0x620f86b677, 0x2)
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build558465220/src/runtime/malloc.go:801 +0xc9 fp=0xc82003ba50 sp=0xc82003ba10
+runtime.makeslice(0x1486a0, 0x620f86b677, 0x620f86b677, 0x0, 0x0, 0x0)
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build558465220/src/runtime/slice.go:32 +0x165 fp=0xc82003baa0 sp=0xc82003ba50
+github.com/gdm85/go-rencode.(*Decoder).decode(0xc82003be60, 0x5e034, 0x0, 0x0, 0x0, 0x0)
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build558465220/src/github.com/gdm85/go-rencode/decoder.go:193 +0xf4a fp=0xc82003bdc0 sp=0xc82003baa0
+github.com/gdm85/go-rencode.(*Decoder).DecodeNext(0xc82003be60, 0x0, 0x0, 0x0, 0x0)
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build558465220/src/github.com/gdm85/go-rencode/decoder.go:83 +0x14c fp=0xc82003be08 sp=0xc82003bdc0
+github.com/gdm85/go-rencode.Fuzz(0x35d000, 0x19, 0x200000, 0x3)
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build558465220/src/github.com/gdm85/go-rencode/fuzz.go:10 +0x1e0 fp=0xc82003bea0 sp=0xc82003be08
+github.com/dvyukov/go-fuzz/go-fuzz-dep.Main(0x1dbeb8)
+	/Users/pmezard/dev/go/dev/src/github.com/dvyukov/go-fuzz/go-fuzz-dep/main.go:47 +0x14c fp=0xc82003bf40 sp=0xc82003bea0
+main.main()
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build558465220/src/go-fuzz-main/main.go:10 +0x23 fp=0xc82003bf50 sp=0xc82003bf40
+runtime.main()
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build558465220/src/runtime/proc.go:128 +0x2b0 fp=0xc82003bfa0 sp=0xc82003bf50
+runtime.goexit()
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build558465220/src/runtime/asm_amd64.s:1805 +0x1 fp=0xc82003bfa8 sp=0xc82003bfa0
+exit status 2

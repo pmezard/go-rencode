@@ -25,6 +25,7 @@ import (
 	"io"
 	"math/big"
 	"strconv"
+	"strings"
 )
 
 // Decoder implements a rencode decoder
@@ -83,6 +84,15 @@ func (r *Decoder) DecodeNext() (interface{}, error) {
 }
 
 func (r *Decoder) decode(typeCode byte) (v interface{}, err error) {
+	defer func() {
+		if r := recover(); r != nil {
+			e, ok := r.(error)
+			if ok && (strings.Contains(e.Error(), "makeslice: len out of range") ||
+				strings.Contains(e.Error(), "out of memory: cannot allocate")) {
+				err = e
+			}
+		}
+	}()
 	switch typeCode {
 	case CHR_TRUE:
 		v = true
@@ -180,6 +190,7 @@ func (r *Decoder) decode(typeCode byte) (v interface{}, err error) {
 				return
 			}
 
+			fmt.Println("ALLOC", stringSz)
 			data := make([]byte, stringSz)
 			_, err = r.r.Read(data)
 			if err != nil {

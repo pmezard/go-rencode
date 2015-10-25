@@ -1,0 +1,14 @@
+panic: runtime error: makeslice: len out of range
+
+goroutine 1 [running]:
+github.com/gdm85/go-rencode.(*Decoder).decode(0xc82003fe60, 0x5d831, 0x0, 0x0, 0x0, 0x0)
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build920758122/src/github.com/gdm85/go-rencode/decoder.go:183 +0xcaa
+github.com/gdm85/go-rencode.(*Decoder).DecodeNext(0xc82003fe60, 0x0, 0x0, 0x0, 0x0)
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build920758122/src/github.com/gdm85/go-rencode/decoder.go:82 +0x14c
+github.com/gdm85/go-rencode.Fuzz(0x35b000, 0xe, 0x200000, 0x3)
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build920758122/src/github.com/gdm85/go-rencode/fuzz.go:10 +0x1c6
+github.com/dvyukov/go-fuzz/go-fuzz-dep.Main(0x1da8f0)
+	/Users/pmezard/dev/go/dev/src/github.com/dvyukov/go-fuzz/go-fuzz-dep/main.go:47 +0x14c
+main.main()
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build920758122/src/go-fuzz-main/main.go:10 +0x23
+exit status 2

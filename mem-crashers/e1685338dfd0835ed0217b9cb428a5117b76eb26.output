@@ -1,0 +1,50 @@
+program hanged (timeout 10 seconds)
+
+SIGABRT: abort
+PC=0x561bb m=0
+
+goroutine 0 [idle]:
+runtime.mach_semaphore_wait(0x803, 0xc82001cdc0, 0x0, 0xc820001500, 0xc820001501, 0x2673c0, 0x4a2c9, 0xffffffffffffffff, 0x25f90, 0x7fff5fbff5d4, ...)
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build920758122/src/runtime/sys_darwin_amd64.s:407 +0xb
+runtime.semasleep1(0xffffffffffffffff, 0x25f90)
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build920758122/src/runtime/os1_darwin.go:385 +0xe5
+runtime.semasleep.func1()
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build920758122/src/runtime/os1_darwin.go:401 +0x29
+runtime.systemstack(0x7fff5fbff5d8)
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build920758122/src/runtime/asm_amd64.s:278 +0xab
+runtime.semasleep(0xffffffffffffffff, 0x0)
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build920758122/src/runtime/os1_darwin.go:402 +0x36
+runtime.notesleep(0x267810)
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build920758122/src/runtime/lock_sema.go:169 +0x100
+runtime.stopm()
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build920758122/src/runtime/proc.go:1447 +0x112
+runtime.exitsyscall0(0xc820001380)
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build920758122/src/runtime/proc.go:2461 +0x16c
+runtime.mcall(0x7fff5fbff6a0)
+	/var/folders/yz/vttk_4956lb816_1pbq9_dnr0000gn/T/go-fuzz-build920758122/src/runtime/asm_amd64.s:204 +0x5b
+
+goroutine 1 [running]:
+	goroutine running on other thread; stack unavailable
+
+rax    0xe
+rbx    0x803
+rcx    0x7fff5fbff560
+rdx    0x7fff5fbff5d8
+rdi    0x803
+rsi    0x2673c0
+rbp    0x267700
+rsp    0x7fff5fbff560
+r8     0xc820001380
+r9     0x0
+r10    0x0
+r11    0x286
+r12    0x2c
+r13    0x1d85b4
+r14    0x0
+r15    0x8
+rip    0x561bb
+rflags 0x286
+cs     0x7
+fs     0x0
+gs     0x0
+exit status 2
